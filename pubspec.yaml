@@ -1,6 +1,6 @@
 name: panda_flutter_ui
 description: Custom Panda UI components for Flutter's project.
-version: 0.0.2
+version: 0.0.3
 homepage:
 
 environment:
@@ -11,7 +11,7 @@ dependencies:
   flutter:
     sdk: flutter
   
-  flutter_svg: 0.23.0+1
+  flutter_svg: 1.1.2
   flutter_spinkit: 5.0.0
   number_display: 3.0.0
   cached_network_image: 3.1.0
