@@ -42,6 +42,7 @@ class PandaTextFormField extends StatefulWidget {
   final double iconSize;
   final bool isHideTextFieldBottomLine;
   final String? initialValue;
+  final Color? textColor;
 
   const PandaTextFormField({
     Key? key,
@@ -84,6 +85,7 @@ class PandaTextFormField extends StatefulWidget {
     this.iconSize = 20,
     this.isHideTextFieldBottomLine = false,
     this.initialValue,
+    this.textColor,
   }) : super(key: key);
 
   @override
@@ -226,6 +228,9 @@ class _PandaTextFormFieldState extends State<PandaTextFormField> {
         onEditingComplete: widget.onEditingComplete == null
             ? null
             : () => widget.onEditingComplete,
+        style: TextStyle(
+          color: widget.textColor,
+        ),
         onChanged: widget.onChanged,
         inputFormatters: widget.inputFormatters,
         readOnly: widget.readOnly,
