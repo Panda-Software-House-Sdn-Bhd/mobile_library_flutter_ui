@@ -43,6 +43,7 @@ class PandaTextFormField extends StatefulWidget {
   final bool isHideTextFieldBottomLine;
   final String? initialValue;
   final Color? textColor;
+  final Color? borderColor;
 
   const PandaTextFormField({
     Key? key,
@@ -86,6 +87,7 @@ class PandaTextFormField extends StatefulWidget {
     this.isHideTextFieldBottomLine = false,
     this.initialValue,
     this.textColor,
+    this.borderColor,
   }) : super(key: key);
 
   @override
@@ -204,7 +206,7 @@ class _PandaTextFormFieldState extends State<PandaTextFormField> {
           ? BoxDecoration(
               color: widget.backgroundColor,
               border: Border.all(
-                color: widget.foregroundColor ?? const Color(0xFF000000),
+                color: widget.borderColor ?? const Color(0xFF000000),
                 width: 0.5,
               ),
               borderRadius: BorderRadius.circular(
