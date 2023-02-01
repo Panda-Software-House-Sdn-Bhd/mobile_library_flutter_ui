@@ -5,6 +5,7 @@ import '../loaders/panda_circular_wave_loader.dart';
 
 class PandaImage extends StatelessWidget {
   final String? remoteImageUrl;
+  final String? watermarkImageUrl;
   final String? localImagePath;
   final FilterQuality filterQuality;
   final BoxFit fit;
@@ -20,6 +21,7 @@ class PandaImage extends StatelessWidget {
   const PandaImage({
     Key? key,
     this.remoteImageUrl,
+    this.watermarkImageUrl,
     this.localImagePath,
     this.width,
     this.height,
@@ -51,6 +53,15 @@ class PandaImage extends StatelessWidget {
       errorWidget: (context, url, error) => errorWidget ?? Container(),
     );
 
+    Widget _watermarkImage = CachedNetworkImage(
+      imageUrl: watermarkImageUrl ?? '',
+      fit: fit,
+      width: width,
+      height: height,
+      filterQuality: filterQuality,
+      errorWidget: (context, url, error) => errorWidget ?? Container(),
+    );
+
     ColorFilter _greyColorFilter = const ColorFilter.matrix(<double>[
       0.2126,
       0.7152,
@@ -73,6 +84,27 @@ class PandaImage extends StatelessWidget {
       1,
       0,
     ]);
+
+    Widget _image = localImagePath != null
+        ? Image.asset(
+            localImagePath ?? '',
+            //File(localImagePath!).readAsBytesSync(),
+            fit: fit,
+            width: width,
+            height: height,
+            filterQuality: filterQuality,
+          )
+        : isZoomableImage
+            ? PhotoView.customChild(
+                minScale: 1.0,
+                maxScale: 2.0,
+                backgroundDecoration: BoxDecoration(
+                  color: backgroundColor,
+                ),
+                child: _networkImage,
+              )
+            : _networkImage;
+
     return ClipRRect(
       borderRadius: borderRadius ?? BorderRadius.zero,
       child: Container(
@@ -84,25 +116,15 @@ class PandaImage extends StatelessWidget {
                   Colors.transparent,
                   BlendMode.multiply,
                 ),
-          child: localImagePath != null
-              ? Image.asset(
-                  localImagePath ?? '',
-                  //File(localImagePath!).readAsBytesSync(),
-                  fit: fit,
-                  width: width,
-                  height: height,
-                  filterQuality: filterQuality,
+          child: (watermarkImageUrl != null)
+              ? Stack(
+                  fit: StackFit.passthrough,
+                  children: [
+                    _image,
+                    _watermarkImage,
+                  ],
                 )
-              : isZoomableImage
-                  ? PhotoView.customChild(
-                      minScale: 1.0,
-                      maxScale: 2.0,
-                      backgroundDecoration: BoxDecoration(
-                        color: backgroundColor,
-                      ),
-                      child: _networkImage,
-                    )
-                  : _networkImage,
+              : _image,
         ),
       ),
     );

@@ -45,9 +45,17 @@ class _MyHomePageState extends State<MyHomePage> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            PandaImage(
-              remoteImageUrl:
-                  'https://cdn.pixabay.com/photo/2023/01/29/11/34/great-tit-7753050_960_720.jpg',
+            Container(
+              height: 400,
+              width: 400,
+              child: PandaImage(
+                remoteImageUrl:
+                    'https://estore.panda-eco.com/crmfileshare01/image/panda3/cache/product/100047_11012023171113-300x300.png',
+                watermarkImageUrl:
+                    'https://estore.panda-eco.com/crmfileshare01/image/panda4/logo/watermark_01022023115628.png',
+                isZoomableImage: true,
+                isGreyImage: true,
+              ),
             ),
           ],
         ),
