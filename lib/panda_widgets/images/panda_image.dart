@@ -117,13 +117,15 @@ class PandaImage extends StatelessWidget {
                   BlendMode.multiply,
                 ),
           child: (watermarkImageUrl != null)
-              ? Stack(
-                  fit: StackFit.passthrough,
-                  children: [
-                    _image,
-                    _watermarkImage,
-                  ],
-                )
+              ? (watermarkImageUrl!.isNotEmpty)
+                  ? Stack(
+                      alignment: Alignment.center,
+                      children: [
+                        _image,
+                        _watermarkImage,
+                      ],
+                    )
+                  : _image
               : _image,
         ),
       ),
