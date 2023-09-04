@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:photo_view/photo_view.dart';
@@ -86,8 +88,8 @@ class PandaImage extends StatelessWidget {
     ]);
 
     Widget _image = localImagePath != null
-        ? Image.asset(
-            localImagePath ?? '',
+        ? Image.file(
+            File(localImagePath ?? ''),
             //File(localImagePath!).readAsBytesSync(),
             fit: fit,
             width: width,
