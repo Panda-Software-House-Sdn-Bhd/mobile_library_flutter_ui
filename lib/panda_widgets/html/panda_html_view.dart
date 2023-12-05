@@ -14,6 +14,7 @@ class PandaHtmlView extends StatelessWidget {
   final FontWeight fontWeight;
   final TextAlign? textAlign;
   final Function(String? url)? onLinkTap;
+  final bool isRemoveBodyPadding;
 
   const PandaHtmlView({
     Key? key,
@@ -26,6 +27,7 @@ class PandaHtmlView extends StatelessWidget {
     this.textAlign,
     this.fontWeight = FontWeight.normal,
     this.onLinkTap,
+    this.isRemoveBodyPadding = false,
   }) : super(key: key);
 
   @override
@@ -131,6 +133,14 @@ class PandaHtmlView extends StatelessWidget {
           padding: HtmlPaddings.all(10),
           alignment: Alignment.topLeft,
         ),
+        "body": isRemoveBodyPadding
+            ? Style(
+                // margin: EdgeInsets.zero,
+                margin: Margins.zero,
+                // padding: EdgeInsets.zero,
+                padding: HtmlPaddings.zero,
+              )
+            : Style()
       },
     );
   }
