@@ -1,7 +1,7 @@
 name: panda_flutter_ui
 description: Custom Panda UI components for Flutter's project.
-version: 0.0.14
-homepage:
+version: 0.0.15
+# homepage:
 
 environment:
   sdk: ">=2.16.1 <3.0.0"

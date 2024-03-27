@@ -143,9 +143,9 @@ class PandaButton extends StatelessWidget {
         : Container();
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
+        foregroundColor: accentColor,
+        backgroundColor: color,
         tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-        primary: color,
-        onPrimary: accentColor,
         elevation: elevation,
         shape: RoundedRectangleBorder(
           borderRadius: isCircleButton
