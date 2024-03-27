@@ -1,6 +1,6 @@
 name: panda_flutter_ui
 description: Custom Panda UI components for Flutter's project.
-version: 0.0.15
+version: 0.0.16
 # homepage:
 
 environment:
@@ -18,7 +18,10 @@ dependencies:
   photo_view: 0.14.0
   auto_size_text: 3.0.0
   # flutter_html: 3.0.0-beta.2 #2.2.1
-
+  flutter_html:
+    git:
+      url: https://github.com/Sub6Resources/flutter_html.git
+      ref: 90550dd # commit hash
 
 dev_dependencies:
   flutter_test:
